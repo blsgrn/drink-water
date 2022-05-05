@@ -1,5 +1,5 @@
 const cupSmall = document.querySelectorAll(".cup-small");
-const litres = document.getElementById("liters");
+const litres = document.getElementById("litres"); //maybe span has no class attribute
 const percentage = document.getElementById("percentage");
 const remained = document.getElementById("remained");
 
@@ -23,4 +23,27 @@ function highlightCups(idx) {
       cup.classList.remove("full");
     }
   });
+
+  upDateBigCup();
+}
+
+function upDateBigCup() {
+  const numFullCups = document.querySelectorAll(".cup.cup-small.full").length;
+  const numCups = cupSmall.length;
+
+  if (numFullCups === 0) {
+    percentage.style.visibility = "hidden";
+    percentage.style.height = 0;
+  } else {
+    percentage.style.visibility = "visible";
+    percentage.style.height = `${(330 * numFullCups) / numCups}px`;
+    percentage.innerText = `${(numFullCups / numCups) * 100}%`;
+  }
+  if (numFullCups === numCups) {
+    remained.style.visibility = "hidden";
+    remained.style.height = 0;
+  } else {
+    remained.style.visibility = "visible";
+    litres.innerText = `${2 - (numFullCups * 250) / 1000}L`;
+  }
 }
