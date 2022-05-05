@@ -1,5 +1,5 @@
 const cupSmall = document.querySelectorAll(".cup-small");
-const litres = document.getElementById("litres"); //maybe span has no class attribute
+const litres = document.getElementById("litres"); //using .getElementsbyClassName didnt work; changed it to id;
 const percentage = document.getElementById("percentage");
 const remained = document.getElementById("remained");
 
